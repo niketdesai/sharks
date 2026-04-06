@@ -169,10 +169,10 @@ export const YEARS = [
     cap: 130.0, dead: 0,
     lines: {
       L1: [ p("Chernyshov","W",24,4.0,"r"),
-            p("Celebrini","C",23,12.0,"r",["GOAT"]),
-            p("Smith","W",25,9.0,"r") ],
+            p("Celebrini","C",23,12.0,"r",["PP1","GOAT"]),
+            p("Smith","W",25,9.0,"r",["PP1"]) ],
       L2: [ tbd("W — TBD",5.0),
-            p("Misa","C",23,8.0,"r"),
+            p("Misa","C",23,8.0,"r",["PP2"]),
             p("Sherwood","W",35,5.8,"x") ],                 // Ext yr4/5
       L3: [ tbd("W — TBD",4.0), tbd("C — TBD",4.0), tbd("W — TBD",2.0) ],
       L4: [ tbd("Depth",1.5), tbd("Depth",1.0), tbd("Depth",1.0) ],
@@ -194,10 +194,10 @@ export const YEARS = [
     cap: 135.0, dead: 0,
     lines: {
       L1: [ p("Chernyshov","W",25,4.0,"r"),
-            p("Celebrini","C",24,12.0,"r",["GOAT"]),
-            p("Smith","W",26,9.0,"r") ],
+            p("Celebrini","C",24,12.0,"r",["PP1","GOAT"]),
+            p("Smith","W",26,9.0,"r",["PP1"]) ],
       L2: [ tbd("W — TBD",5.0),
-            p("Misa","C",24,8.0,"r"),
+            p("Misa","C",24,8.0,"r",["PP2"]),
             p("Sherwood","W",36,5.8,"lu") ],                // Ext yr5/5 last yr; UFA
       L3: [ tbd("W — TBD",4.0), tbd("C — TBD",4.0), tbd("W — TBD",2.0) ],
       L4: [ tbd("Depth",1.5), tbd("Depth",1.0), tbd("Depth",1.0) ],
