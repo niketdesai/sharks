@@ -5,13 +5,12 @@ import App from "./App.jsx";
 import PasswordGate from "./components/PasswordGate.jsx";
 
 function Root() {
-  const [authed, setAuthed] = useState(false);
+  const [authed, setAuthed] = useState(() => sessionStorage.getItem("p071_auth") === "1");
   const [arriving, setArriving] = useState(false);
 
   const handleAuth = () => {
-    // Brief delay for the "arrival" animation to start
+    sessionStorage.setItem("p071_auth", "1");
     setArriving(true);
-    // Content appears after gate exit animation completes
     setTimeout(() => setAuthed(true), 200);
   };
 
