@@ -32,6 +32,7 @@ export default function Shell({ tabs, activeTab, onTabChange, arriving, children
         display: "flex",
         flexDirection: "column",
         background: "#0a0a0a",
+        overflow: "visible",
       }}
     >
       {/* Top Bar */}

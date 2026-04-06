@@ -33,6 +33,9 @@
 
     <style>
       *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+      html {
+        overflow-x: hidden;
+      }
       html, body, #root {
         min-height: 100vh;
         min-height: 100dvh;
@@ -41,12 +44,9 @@
         font-family: 'DM Sans', sans-serif;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
-        overflow-x: hidden;
       }
-      /* Prevent iOS tap highlight */
       * { -webkit-tap-highlight-color: transparent; }
-      /* Prevent pull-to-refresh on mobile */
-      body { overscroll-behavior: none; }
+      body { overscroll-behavior-y: contain; }
     </style>
   </head>
   <body>

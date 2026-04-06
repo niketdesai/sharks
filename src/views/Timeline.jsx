@@ -46,8 +46,8 @@ function PlayerRow({ player }) {
       <Dot status={player.status} />
       <div style={{ flex:1, display:"flex", alignItems:"center", minWidth:0 }}>
         <span style={{ ...st.sans(12, T.c.t1), fontWeight:500, whiteSpace:"nowrap", overflow:"hidden", textOverflow:"ellipsis" }}>{player.name}</span>
+        {player.age != null && <span style={{ ...st.mono(9, T.c.t6), marginLeft:5, flexShrink:0 }}>{player.age}</span>}
         {player.tags.map((t) => <Tag key={t} type={t} />)}
-        {player.age != null && <span style={{ ...st.mono(9, T.c.t7), marginLeft:4 }}>{player.age}</span>}
       </div>
       <div style={{ ...st.mono(11, T.c.t3), width:40, textAlign:"right", fontVariantNumeric:"tabular-nums", fontWeight:500, flexShrink:0 }}>
         {m(player.cost)}
@@ -92,11 +92,6 @@ function CapBar({ year }) {
         <span style={st.mono(9, T.c.success)}>SPACE</span>
         <span style={st.mono(11, year.space > 10 ? T.c.success : "#EF9F27", { fontWeight:500 })}>{m(year.space)}</span>
       </div>
-      {year.tbdCount > 0 && (
-        <div style={{ ...st.mono(9, T.c.t6), textAlign:"right", marginTop:3 }}>
-          {year.tbdCount} TBD slot{year.tbdCount > 1 ? "s" : ""}
-        </div>
-      )}
     </div>
   );
 }
@@ -149,7 +144,7 @@ export default function Timeline() {
         <span style={st.mono(10, T.c.t6)}>All costs in $M</span>
       </div>
 
-      <div style={{ overflowX:"auto", WebkitOverflowScrolling:"touch", paddingBottom:8 }}>
+      <div style={{ overflowX:"auto", overflowY:"visible", WebkitOverflowScrolling:"touch", paddingBottom:8 }}>
         <table style={{ borderCollapse:"collapse", minWidth:labelW + colW * YEARS.length }}>
           <thead><tr>
             <th style={{ ...stickyBase, zIndex:4, borderBottom:cellBorder }} />
