@@ -1,118 +1,102 @@
-import { YEARS, LINE_ORDER, SECTION_BREAKS, STATUS } from "../data/roster.js";
+import { YEARS, LINE_ORDER, SECTION_BREAKS, SECTION_ENDS, STATUS } from "../data/roster.js";
 import { T, st } from "../theme/tokens.js";
 
-const fmt = (v) => {
+const m = (v) => {
   if (v === null || v === undefined) return "—";
-  if (v >= 1) return `$${v}M`;
-  return `$${Math.round(v * 1000)}K`;
+  return v.toFixed(1);
 };
 
-const phaseColors = {
-  "Emergence": "#008C96",
-  "Playoff push": "#378ADD",
-  "Cup run 1": "#9B7FD4",
-  "Cup run 2": "#9B7FD4",
-  "Cup run 3 / retool": "#D85A30",
-  "Reload": "#D85A30",
-};
-
-function StatusDot({ status }) {
+function Dot({ status }) {
   const s = STATUS[status];
   if (!s) return null;
   return (
     <span style={{
-      display: "inline-block", width: 5, height: 5, borderRadius: "50%",
+      display:"inline-block", width:6, height:6, borderRadius:"50%",
       background: status === "f" ? "transparent" : s.color,
-      border: status === "f" ? `1px dashed ${T.c.t6}` : "none",
-      flexShrink: 0,
+      border: status === "f" ? `1.5px dashed ${T.c.t6}` : "none",
+      flexShrink:0, marginRight:4,
     }} />
   );
 }
 
+const TAG_STYLE = {
+  GOAT: { bg:"#008C96", fg:"#fff" },
+  PP1: { bg:"rgba(239,159,39,0.15)", fg:"#EF9F27" },
+  PP2: { bg:"rgba(55,138,221,0.15)", fg:"#5B8BA0" },
+  PK:  { bg:"rgba(155,127,212,0.15)", fg:"#9B7FD4" },
+};
 function Tag({ type }) {
-  const styles = {
-    GOAT: { bg: "#008C96", fg: "#fff" },
-    PP1: { bg: "rgba(239,159,39,0.15)", fg: "#EF9F27" },
-    PP2: { bg: "rgba(55,138,221,0.15)", fg: "#5B8BA0" },
-    PK: { bg: "rgba(155,127,212,0.15)", fg: "#9B7FD4" },
-  };
-  const s = styles[type] || { bg: T.c.bg5, fg: T.c.t4 };
-  return (
-    <span style={{
-      ...st.mono(8, s.fg),
-      background: s.bg,
-      padding: "1px 4px",
-      borderRadius: 2,
-      fontWeight: 500,
-      lineHeight: 1,
-    }}>{type}</span>
-  );
+  const s = TAG_STYLE[type] || { bg:T.c.bg5, fg:T.c.t4 };
+  return <span style={{ fontFamily:T.fonts.mono, fontSize:8, fontWeight:500, color:s.fg, background:s.bg, padding:"1px 4px", borderRadius:2, marginLeft:4, lineHeight:1, whiteSpace:"nowrap" }}>{type}</span>;
 }
 
 function PlayerRow({ player }) {
   if (player.isTbd) {
     return (
-      <div style={{
-        ...st.mono(11, T.c.t6),
-        padding: "3px 0",
-        fontStyle: "italic",
-      }}>
-        {player.name}
+      <div style={{ display:"flex", alignItems:"center", padding:"3px 0", minHeight:22 }}>
+        <div style={{ flex:1, ...st.mono(10.5, T.c.t6), fontStyle:"italic" }}>{player.name}</div>
+        <div style={{ ...st.mono(11, T.c.t7), width:40, textAlign:"right", fontVariantNumeric:"tabular-nums" }}>
+          {player.cost ? m(player.cost) : "—"}
+        </div>
       </div>
     );
   }
   return (
-    <div style={{
-      display: "flex", alignItems: "center", gap: 4,
-      padding: "3px 0",
-    }}>
-      <StatusDot status={player.status} />
-      <span style={{ ...st.sans(12, T.c.t1), fontWeight: 500, flex: 1, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
-        {player.name}
-      </span>
-      {player.age != null && (
-        <span style={{ ...st.mono(9, T.c.t6), minWidth: 16, textAlign: "right" }}>{player.age}</span>
-      )}
-      <span style={{ ...st.mono(11, T.c.t4), minWidth: 38, textAlign: "right", fontVariantNumeric: "tabular-nums" }}>
-        {fmt(player.cost)}
-      </span>
-      {player.tags.map((t) => <Tag key={t} type={t} />)}
+    <div style={{ display:"flex", alignItems:"center", padding:"3px 0", minHeight:22 }}>
+      <Dot status={player.status} />
+      <div style={{ flex:1, display:"flex", alignItems:"center", minWidth:0 }}>
+        <span style={{ ...st.sans(12, T.c.t1), fontWeight:500, whiteSpace:"nowrap", overflow:"hidden", textOverflow:"ellipsis" }}>{player.name}</span>
+        {player.tags.map((t) => <Tag key={t} type={t} />)}
+        {player.age != null && <span style={{ ...st.mono(9, T.c.t7), marginLeft:4 }}>{player.age}</span>}
+      </div>
+      <div style={{ ...st.mono(11, T.c.t3), width:40, textAlign:"right", fontVariantNumeric:"tabular-nums", fontWeight:500, flexShrink:0 }}>
+        {m(player.cost)}
+      </div>
+    </div>
+  );
+}
+
+function SectionTotal({ label, year, lineKeys }) {
+  let total = 0;
+  lineKeys.forEach((k) => {
+    (year.lines[k] || []).forEach((pl) => { if (pl.cost) total += pl.cost; });
+  });
+  return (
+    <div style={{ display:"flex", justifyContent:"flex-end", padding:"2px 0", borderTop:`0.5px solid ${T.c.bg4}` }}>
+      <span style={{ ...st.mono(9, T.c.t5), marginRight:8 }}>{label}</span>
+      <span style={{ ...st.mono(11, T.c.t3), width:40, textAlign:"right", fontVariantNumeric:"tabular-nums", fontWeight:500 }}>{m(Math.round(total*10)/10)}</span>
     </div>
   );
 }
 
 function CapBar({ year }) {
-  const { cap, spend, dead, space } = year;
   return (
-    <div style={{
-      display: "grid", gridTemplateColumns: "1fr 1fr",
-      gap: "4px 12px",
-      marginTop: 6,
-      padding: "6px 0 2px",
-      borderTop: `0.5px solid ${T.c.bg5}`,
-    }}>
-      <div style={{ display: "flex", justifyContent: "space-between" }}>
+    <div style={{ marginTop:8, paddingTop:6, borderTop:`0.5px solid ${T.c.bg4}` }}>
+      <div style={{ display:"flex", justifyContent:"space-between", marginBottom:3 }}>
         <span style={st.mono(9, T.c.t6)}>CAP</span>
-        <span style={st.mono(11, T.c.t2, { fontWeight: 500 })}>${cap}M</span>
+        <span style={st.mono(11, T.c.t1, { fontWeight:500 })}>{m(year.cap)}</span>
       </div>
-      <div style={{ display: "flex", justifyContent: "space-between" }}>
-        <span style={st.mono(9, T.c.t6)}>SPEND</span>
-        <span style={st.mono(11, spend != null ? T.c.t2 : T.c.t6, { fontWeight: 500 })}>
-          {spend != null ? `$${spend}M` : "TBD"}
-        </span>
+      <div style={{ display:"flex", justifyContent:"space-between", marginBottom:3 }}>
+        <span style={st.mono(9, T.c.t6)}>COMMITTED</span>
+        <span style={st.mono(11, "#378ADD", { fontWeight:500 })}>{m(year.committed)}</span>
       </div>
-      <div style={{ display: "flex", justifyContent: "space-between" }}>
-        <span style={st.mono(9, dead > 0 ? "#b85c5c" : T.c.success)}>DEAD</span>
-        <span style={st.mono(11, dead > 0 ? "#b85c5c" : T.c.success, { fontWeight: 500 })}>
-          {dead > 0 ? `$${dead}M` : "$0"}
-        </span>
+      <div style={{ display:"flex", justifyContent:"space-between", marginBottom:3 }}>
+        <span style={st.mono(9, T.c.t6)}>ESTIMATED</span>
+        <span style={st.mono(11, "#9B7FD4", { fontWeight:500 })}>{m(year.estimated)}</span>
       </div>
-      <div style={{ display: "flex", justifyContent: "space-between" }}>
-        <span style={st.mono(9, T.c.t6)}>SPACE</span>
-        <span style={st.mono(11, space != null ? T.c.success : T.c.t6, { fontWeight: 500 })}>
-          {space != null ? `$${space}M` : "TBD"}
-        </span>
+      <div style={{ display:"flex", justifyContent:"space-between", marginBottom:3 }}>
+        <span style={st.mono(9, year.dead > 0 ? "#b85c5c" : T.c.success)}>DEAD</span>
+        <span style={st.mono(11, year.dead > 0 ? "#b85c5c" : T.c.success, { fontWeight:500 })}>{m(year.dead)}</span>
       </div>
+      <div style={{ display:"flex", justifyContent:"space-between", paddingTop:3, borderTop:`0.5px solid ${T.c.bg4}` }}>
+        <span style={st.mono(9, T.c.success)}>SPACE</span>
+        <span style={st.mono(11, year.space > 10 ? T.c.success : "#EF9F27", { fontWeight:500 })}>{m(year.space)}</span>
+      </div>
+      {year.tbdCount > 0 && (
+        <div style={{ ...st.mono(9, T.c.t6), textAlign:"right", marginTop:3 }}>
+          {year.tbdCount} TBD slot{year.tbdCount > 1 ? "s" : ""}
+        </div>
+      )}
     </div>
   );
 }
@@ -121,121 +105,96 @@ function DeadCapCell({ items }) {
   if (!items || items.length === 0) {
     return <div style={st.mono(11, T.c.success)}>Clean</div>;
   }
-  const total = items.reduce((s, i) => s + i.cost, 0);
   return (
     <div>
       {items.map((d, i) => (
-        <div key={i} style={{ display: "flex", justifyContent: "space-between", padding: "2px 0" }}>
-          <span style={st.mono(11, "#b85c5c")}>{d.name}</span>
-          <span style={st.mono(11, "#b85c5c", { fontVariantNumeric: "tabular-nums" })}>{fmt(d.cost)}</span>
+        <div key={i} style={{ display:"flex", justifyContent:"space-between", padding:"2px 0" }}>
+          <span style={{ ...st.mono(10.5, "#b85c5c") }}>{d.name} <span style={{ color:"#7a4444", fontSize:9 }}>{d.reason}</span></span>
+          <span style={{ ...st.mono(11, "#b85c5c"), fontVariantNumeric:"tabular-nums", width:40, textAlign:"right" }}>{m(d.cost)}</span>
         </div>
       ))}
-      <div style={{
-        display: "flex", justifyContent: "space-between",
-        padding: "4px 0 0", marginTop: 2,
-        borderTop: `0.5px solid rgba(184,92,92,0.3)`,
-      }}>
-        <span style={st.mono(10, "#b85c5c", { fontWeight: 500 })}>TOTAL</span>
-        <span style={st.mono(11, "#b85c5c", { fontWeight: 500 })}>${total.toFixed(1)}M</span>
-      </div>
     </div>
   );
 }
 
-export default function Timeline() {
-  const colW = 210;
-  const labelW = 38;
+const FWD_KEYS = ["L1","L2","L3","L4"];
+const DEF_KEYS = ["D1","D2","D3"];
+const G_KEYS   = ["G"];
 
+export default function Timeline() {
+  const colW = 220;
+  const labelW = 36;
   const cellBorder = `0.5px solid ${T.c.bg4}`;
   const cellPad = "6px 8px";
 
-  const stickyCell = {
-    position: "sticky", left: 0, zIndex: 3,
-    background: T.c.bg1, borderRight: `0.5px solid ${T.c.t8}`,
-    width: labelW, minWidth: labelW, maxWidth: labelW,
-    textAlign: "center", verticalAlign: "top",
-    padding: "6px 4px",
+  const stickyBase = {
+    position:"sticky", left:0, zIndex:3, background:T.c.bg1,
+    borderRight:`0.5px solid ${T.c.t8}`,
+    width:labelW, minWidth:labelW, maxWidth:labelW,
+    textAlign:"center", verticalAlign:"top", padding:"6px 4px",
   };
-
-  const yearCell = {
-    width: colW, minWidth: colW, maxWidth: colW,
-    verticalAlign: "top", padding: cellPad,
-    borderBottom: cellBorder,
+  const yearBase = {
+    width:colW, minWidth:colW, maxWidth:colW,
+    verticalAlign:"top", padding:cellPad, borderBottom:cellBorder,
   };
 
   return (
-    <div style={{ padding: "16px 0" }}>
-      {/* Legend */}
-      <div style={{
-        display: "flex", gap: 14, padding: "0 16px 12px", flexWrap: "wrap",
-        alignItems: "center",
-      }}>
-        {Object.entries(STATUS).map(([k, v]) => (
-          <div key={k} style={{ display: "flex", alignItems: "center", gap: 4 }}>
-            <StatusDot status={k} />
-            <span style={st.mono(10, T.c.t5)}>{v.label}</span>
+    <div style={{ padding:"16px 0" }}>
+      <div style={{ display:"flex", gap:14, padding:"0 16px 12px", flexWrap:"wrap", alignItems:"center" }}>
+        {Object.entries(STATUS).map(([k,v]) => (
+          <div key={k} style={{ display:"flex", alignItems:"center", gap:4 }}>
+            <Dot status={k} /><span style={st.mono(10, T.c.t5)}>{v.label}</span>
           </div>
         ))}
+        <span style={st.mono(10, T.c.t6)}>All costs in $M</span>
       </div>
 
-      {/* Scrollable table */}
-      <div style={{
-        overflowX: "auto", WebkitOverflowScrolling: "touch",
-        paddingBottom: 8,
-      }}>
-        <table style={{
-          borderCollapse: "collapse",
-          minWidth: labelW + colW * YEARS.length,
-        }}>
-          <thead>
-            <tr>
-              <th style={{ ...stickyCell, zIndex: 4, background: T.c.bg1, borderBottom: cellBorder }} />
-              {YEARS.map((yr) => (
-                <th key={yr.id} style={{ ...yearCell, borderBottom: `2px solid ${phaseColors[yr.phase] || T.c.accent}`, verticalAlign: "bottom" }}>
-                  <div style={{ ...st.sans(16, T.c.t0), fontWeight: 500 }}>{yr.id}</div>
-                  <div style={{
-                    ...st.mono(10, phaseColors[yr.phase] || T.c.accent),
-                    fontWeight: 500, textTransform: "uppercase", letterSpacing: "0.04em",
-                    marginTop: 2,
-                  }}>{yr.phase}</div>
-                  <CapBar year={yr} />
-                </th>
-              ))}
-            </tr>
-          </thead>
+      <div style={{ overflowX:"auto", WebkitOverflowScrolling:"touch", paddingBottom:8 }}>
+        <table style={{ borderCollapse:"collapse", minWidth:labelW + colW * YEARS.length }}>
+          <thead><tr>
+            <th style={{ ...stickyBase, zIndex:4, borderBottom:cellBorder }} />
+            {YEARS.map((yr) => (
+              <th key={yr.id} style={{ ...yearBase, borderBottom:`2px solid ${yr.phaseColor}`, verticalAlign:"bottom" }}>
+                <div style={{ ...st.sans(16, T.c.t0), fontWeight:500 }}>{yr.id}</div>
+                <div style={{ ...st.mono(10, yr.phaseColor), fontWeight:500, textTransform:"uppercase", letterSpacing:"0.04em", marginTop:2 }}>{yr.phase}</div>
+                <CapBar year={yr} />
+              </th>
+            ))}
+          </tr></thead>
           <tbody>
             {LINE_ORDER.map((lineKey) => {
               const sectionLabel = SECTION_BREAKS[lineKey];
+              const isEnd = SECTION_ENDS[lineKey];
+              let subtotalKeys, subtotalLabel;
+              if (lineKey === "L4") { subtotalKeys = FWD_KEYS; subtotalLabel = "FWD"; }
+              if (lineKey === "D3") { subtotalKeys = DEF_KEYS; subtotalLabel = "DEF"; }
+              if (lineKey === "G")  { subtotalKeys = G_KEYS;   subtotalLabel = "G"; }
+
               return [
                 sectionLabel && (
                   <tr key={`sep-${lineKey}`}>
-                    <td style={{ ...stickyCell, borderBottom: cellBorder, padding: "4px" }}>
-                      <span style={st.mono(8, T.c.t6)}></span>
-                    </td>
+                    <td style={{ ...stickyBase, borderBottom:cellBorder, padding:"4px" }} />
                     {YEARS.map((yr) => (
-                      <td key={yr.id} style={{ ...yearCell, background: T.c.bg2, padding: "4px 8px" }}>
-                        <span style={{ ...st.mono(9, T.c.t5), fontWeight: 500, textTransform: "uppercase", letterSpacing: "0.06em" }}>
-                          {sectionLabel}
-                        </span>
+                      <td key={yr.id} style={{ ...yearBase, background:T.c.bg2, padding:"4px 8px" }}>
+                        <span style={{ ...st.mono(9, T.c.t5), fontWeight:500, textTransform:"uppercase", letterSpacing:"0.06em" }}>{sectionLabel}</span>
                       </td>
                     ))}
                   </tr>
                 ),
                 <tr key={lineKey}>
-                  <td style={{ ...stickyCell, borderBottom: cellBorder }}>
-                    <span style={st.mono(11, T.c.t4, { fontWeight: 500 })}>{lineKey}</span>
+                  <td style={{ ...stickyBase, borderBottom:cellBorder }}>
+                    <span style={st.mono(11, T.c.t4, { fontWeight:500 })}>{lineKey}</span>
                   </td>
                   {YEARS.map((yr) => {
                     const players = yr.lines[lineKey] || [];
                     return (
-                      <td key={yr.id} style={yearCell}>
+                      <td key={yr.id} style={yearBase}>
                         {players.map((pl, i) => (
-                          <div key={i} style={{
-                            borderTop: i > 0 ? `0.5px dotted ${T.c.bg5}` : "none",
-                          }}>
+                          <div key={i} style={{ borderTop: i > 0 ? `0.5px dotted ${T.c.bg5}` : "none" }}>
                             <PlayerRow player={pl} />
                           </div>
                         ))}
+                        {isEnd && subtotalKeys && <SectionTotal label={subtotalLabel} year={yr} lineKeys={subtotalKeys} />}
                       </td>
                     );
                   })}
@@ -243,29 +202,31 @@ export default function Timeline() {
               ];
             })}
 
-            {/* Extras row */}
-            <tr>
-              <td style={{ ...stickyCell, borderBottom: cellBorder }}>
-                <span style={st.mono(9, T.c.t6)}>+</span>
-              </td>
-              {YEARS.map((yr) => (
-                <td key={yr.id} style={{ ...yearCell, opacity: 0.7 }}>
-                  {yr.extras.length > 0 ? yr.extras.map((pl, i) => (
-                    <div key={i} style={{ borderTop: i > 0 ? `0.5px dotted ${T.c.bg5}` : "none" }}>
-                      <PlayerRow player={pl} />
-                    </div>
-                  )) : null}
+            {/* Extras */}
+            {YEARS.some((yr) => yr.extras.length > 0) && (
+              <tr>
+                <td style={{ ...stickyBase, borderBottom:cellBorder }}>
+                  <span style={st.mono(9, T.c.t6)}>+</span>
                 </td>
-              ))}
-            </tr>
+                {YEARS.map((yr) => (
+                  <td key={yr.id} style={{ ...yearBase, opacity:0.7 }}>
+                    {yr.extras.map((pl, i) => (
+                      <div key={i} style={{ borderTop: i > 0 ? `0.5px dotted ${T.c.bg5}` : "none" }}>
+                        <PlayerRow player={pl} />
+                      </div>
+                    ))}
+                  </td>
+                ))}
+              </tr>
+            )}
 
-            {/* Dead cap section */}
+            {/* Dead cap */}
             <tr>
-              <td style={{ ...stickyCell, borderBottom: cellBorder, background: T.c.bg1 }}>
-                <span style={st.mono(9, "#b85c5c", { fontWeight: 500 })}>DEAD</span>
+              <td style={{ ...stickyBase, borderBottom:cellBorder }}>
+                <span style={st.mono(9, "#b85c5c", { fontWeight:500 })}>DEAD</span>
               </td>
               {YEARS.map((yr) => (
-                <td key={yr.id} style={{ ...yearCell, background: "rgba(184,92,92,0.03)" }}>
+                <td key={yr.id} style={{ ...yearBase, background:"rgba(184,92,92,0.03)" }}>
                   <DeadCapCell items={yr.deadItems} />
                 </td>
               ))}
