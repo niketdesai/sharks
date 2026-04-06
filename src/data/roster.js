@@ -80,10 +80,10 @@ export const YEARS = [
             p("Celebrini","C",20,1.0,"lr",["PP1","GOAT"]), // ELC last yr; RFA. Ext eligible Jul 1.
             p("Smith","W",22,1.0,"lr",["PP1"]) ],           // ELC last yr; RFA. Ext eligible Jul 1.
       L2: [ tbd("W — via trade/FA",5.0),
-            p("Misa","C",20,1.0,"e",["PP2"]),               // ELC yr2/3
+            p("Wennberg","C",32,6.0,"x",["PK"]),            // Ext yr1/3
             p("Sherwood","W",32,5.8,"x") ],                  // Ext yr1/5
       L3: [ p("Toffoli","W",34,6.0,"x",["PP1"]),           // $6M yr2/3
-            p("Wennberg","C",32,6.0,"x",["PK"]),            // Ext yr1/3
+            p("Misa","C",20,1.0,"e",["PP2"]),               // ELC yr2/3
             p("Dellandrea","C",26,1.6,"x") ],                // $1.6M yr2/3
       L4: [ p("Goodrow","W",34,3.6,"lu",["PK"]),           // $3.6M last yr; UFA
             p("Ostapchuk","C",23,1.2,"r"),                   // New deal (proj)
@@ -117,10 +117,10 @@ export const YEARS = [
             p("Celebrini","C",21,12.0,"r",["PP1","GOAT"]), // Ext yr1
             p("Smith","W",23,9.0,"r",["PP1"]) ],            // Ext yr1
       L2: [ tbd("W — TBD",5.0),
-            p("Misa","C",21,1.0,"lr",["PP2"]),              // ELC last yr; RFA
+            p("Wennberg","C",33,6.0,"x",["PK"]),            // Ext yr2/3
             p("Sherwood","W",33,5.8,"x") ],                  // Ext yr2/5
       L3: [ p("Toffoli","W",35,6.0,"lu"),                  // $6M last yr; UFA
-            p("Wennberg","C",33,6.0,"x",["PK"]),            // Ext yr2/3
+            p("Misa","C",21,1.0,"lr",["PP2"]),              // ELC last yr; RFA
             p("Dellandrea","C",27,1.6,"lu") ],               // $1.6M last yr; UFA
       L4: [ tbd("Depth",1.5), tbd("Depth",1.0), tbd("Depth",1.0) ],
       D1: [ tbd("D — TBD",6.0), tbd("D — TBD",5.5) ],

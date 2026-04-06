@@ -11,7 +11,7 @@ export const PROJECT = {
   description: "San Jose Sharks roster and contract timeline — the Celebrini era window",
   entity: "ENDD I, LLC",
   passcode: "sharks",
-  version: "v0.3.1-260406",
+  version: "v0.3.2-260406",
   accent: "#008C96",
   accentName: "teal",
   repoName: "sharks",
