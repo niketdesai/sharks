@@ -84,7 +84,7 @@ export const YEARS = [
             p("Gaudette","W",30,2.0,"lu") ],                   // $2M last yr; UFA
       D1: [ p("Orlov","D",35,6.5,"lu"),                       // $6.5M last yr; UFA
             tbd("D — via Eklund trade",5.5) ],
-      D2: [ p("Dickinson","D",20,0.9,"e"),                    // ELC yr2/3
+      D2: [ p("Dickinson","D",20,0.9,"e",["PP2"]),             // ELC yr2/3
             tbd("D — FA target",5.0) ],
       D3: [ p("Ferraro","D",28,5.5,"r"),                     // Re-signed (proj)
             p("Mukhamadullin","D",25,1.5,"r") ],              // New deal (proj)
@@ -117,7 +117,7 @@ export const YEARS = [
             p("Chernyshov","W",22,0.9,"lr") ],                 // ELC last yr; RFA
       L4: [ tbd("Depth",1.5), tbd("Depth",1.0), tbd("Depth",1.0) ],
       D1: [ tbd("D — TBD",6.0), tbd("D — TBD",5.5) ],
-      D2: [ p("Dickinson","D",21,0.9,"lr"),                   // ELC last yr; RFA
+      D2: [ p("Dickinson","D",21,0.9,"lr",["PP2"]),                   // ELC last yr; RFA
             p("Ferraro","D",29,5.5,"r") ],
       D3: [ p("Mukhamadullin","D",26,2.0,"r"),
             tbd("D — TBD",3.0) ],
@@ -140,10 +140,10 @@ export const YEARS = [
             p("Misa","C",22,8.0,"r",["PP2"]),                  // Ext yr1
             p("Sherwood","W",34,5.8,"x") ],                    // Ext yr3/5
       L3: [ tbd("W — TBD",4.0),
-            p("Wennberg","C",34,6.0,"lu"),                     // Ext last yr; UFA
+            p("Wennberg","C",34,6.0,"lu",["PK"]),                     // Ext last yr; UFA
             tbd("W — TBD",2.0) ],
       L4: [ tbd("Depth",1.5), tbd("Depth",1.0), tbd("Depth",1.0) ],
-      D1: [ p("Dickinson","D",22,8.0,"r"),                   // Ext yr1. Elevated to D1.
+      D1: [ p("Dickinson","D",22,8.0,"r",["PP2"]),                   // Ext yr1. Elevated to D1.
             tbd("D — partner",6.0) ],
       D2: [ tbd("D — TBD",5.0),
             p("Ferraro","D",30,5.5,"r") ],
@@ -169,7 +169,7 @@ export const YEARS = [
             p("Sherwood","W",35,5.8,"x") ],                    // Ext yr4/5
       L3: [ tbd("W — TBD",4.0), tbd("C — TBD",4.0), tbd("W — TBD",2.0) ],
       L4: [ tbd("Depth",1.5), tbd("Depth",1.0), tbd("Depth",1.0) ],
-      D1: [ p("Dickinson","D",23,8.0,"r"),
+      D1: [ p("Dickinson","D",23,8.0,"r",["PP2"]),
             tbd("D — partner",6.0) ],
       D2: [ tbd("D — TBD",5.0),
             p("Ferraro","D",31,5.5,"lu") ],                    // Re-signed last yr
@@ -194,7 +194,7 @@ export const YEARS = [
             p("Sherwood","W",36,5.8,"lu") ],                   // Ext yr5/5 last yr; UFA
       L3: [ tbd("W — TBD",4.0), tbd("C — TBD",4.0), tbd("W — TBD",2.0) ],
       L4: [ tbd("Depth",1.5), tbd("Depth",1.0), tbd("Depth",1.0) ],
-      D1: [ p("Dickinson","D",24,8.0,"r"),
+      D1: [ p("Dickinson","D",24,8.0,"r",["PP2"]),
             tbd("D — partner",6.0) ],
       D2: [ tbd("D — TBD",5.0), tbd("D — TBD",4.0) ],
       D3: [ tbd("D — TBD",3.0), tbd("D — TBD",3.0) ],
