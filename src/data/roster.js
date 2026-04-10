@@ -70,10 +70,10 @@ export const YEARS = [
     detail: "WC1/WC2 target. Defense rebuilt.",
     cap: 104.0, dead: 4.1,
     lines: {
-      L1: [ p("Graf","W",24,2.5,"x",["PK"]),                 // Re-signed 3yr. Yr1/3 thru 28-29.
+      L1: [ tbd("W — via trade/FA",5.0),
             p("Celebrini","C",20,1.0,"lr",["PP1","GOAT"]),    // ELC last yr; RFA. Ext eligible Jul 1.
             p("Smith","W",22,1.0,"lr",["PP1"]) ],              // ELC last yr; RFA. Ext eligible Jul 1.
-      L2: [ tbd("W — via trade/FA",5.0),
+      L2: [ p("Graf","W",24,2.5,"x",["PK"]),                  // Re-signed 3yr. Yr1/3 thru 28-29.
             p("Wennberg","C",32,6.0,"x",["PK"]),              // Ext yr1/3
             p("Sherwood","W",32,5.8,"x") ],                    // Ext yr1/5
       L3: [ p("Toffoli","W",34,6.0,"x",["PP1"]),             // $6M yr2/3
@@ -106,10 +106,10 @@ export const YEARS = [
     detail: "Window opens. Celebrini + Smith extensions kick in.",
     cap: 113.5, dead: 1.4,
     lines: {
-      L1: [ p("Graf","W",25,2.5,"x",["PK"]),                 // Re-signed yr2/3
+      L1: [ tbd("W — TBD",5.0),
             p("Celebrini","C",21,12.0,"r",["PP1","GOAT"]),    // Ext yr1
             p("Smith","W",23,9.0,"r",["PP1"]) ],               // Ext yr1
-      L2: [ tbd("W — TBD",5.0),
+      L2: [ p("Graf","W",25,2.5,"x",["PK"]),                  // Re-signed yr2/3
             p("Wennberg","C",33,6.0,"x",["PK"]),              // Ext yr2/3
             p("Sherwood","W",33,5.8,"x") ],                    // Ext yr2/5
       L3: [ p("Toffoli","W",35,6.0,"lu"),                    // $6M last yr; UFA
@@ -133,10 +133,10 @@ export const YEARS = [
     detail: "Peak window. Dickinson D1. Misa + Chernyshov extensions kick in.",
     cap: 123.0, dead: 1.4,
     lines: {
-      L1: [ p("Graf","W",26,2.5,"lu",["PK"]),                // Re-signed last yr; UFA after
+      L1: [ p("Chernyshov","W",23,4.0,"r"),                  // Ext yr1. Graduates to L1.
             p("Celebrini","C",22,12.0,"r",["PP1","GOAT"]),
             p("Smith","W",24,9.0,"r",["PP1"]) ],
-      L2: [ p("Chernyshov","W",23,4.0,"r"),                  // Ext yr1. Graduates to L2.
+      L2: [ p("Graf","W",26,2.5,"lu",["PK"]),                // Re-signed last yr; UFA after
             p("Misa","C",22,8.0,"r",["PP2"]),                  // Ext yr1
             p("Sherwood","W",34,5.8,"x") ],                    // Ext yr3/5
       L3: [ tbd("W — TBD",4.0),
@@ -161,10 +161,10 @@ export const YEARS = [
     detail: "Sustain or retool. Dead cap clean.",
     cap: 130.0, dead: 0,
     lines: {
-      L1: [ p("Graf","W",27,4.0,"r",["PK"]),                 // Re-signed again (proj)
+      L1: [ p("Chernyshov","W",24,4.0,"r"),
             p("Celebrini","C",23,12.0,"r",["PP1","GOAT"]),
             p("Smith","W",25,9.0,"r",["PP1"]) ],
-      L2: [ p("Chernyshov","W",24,4.0,"r"),
+      L2: [ p("Graf","W",27,4.0,"r",["PK"]),                 // Re-signed again (proj)
             p("Misa","C",23,8.0,"r",["PP2"]),
             p("Sherwood","W",35,5.8,"x") ],                    // Ext yr4/5
       L3: [ tbd("W — TBD",4.0), tbd("C — TBD",4.0), tbd("W — TBD",2.0) ],
@@ -186,10 +186,10 @@ export const YEARS = [
     detail: "Post-window. Core still young enough to reload.",
     cap: 135.0, dead: 0,
     lines: {
-      L1: [ p("Graf","W",28,4.0,"r",["PK"]),                 // Re-signed (proj)
+      L1: [ p("Chernyshov","W",25,4.0,"r"),
             p("Celebrini","C",24,12.0,"r",["PP1","GOAT"]),
             p("Smith","W",26,9.0,"r",["PP1"]) ],
-      L2: [ p("Chernyshov","W",25,4.0,"r"),
+      L2: [ p("Graf","W",28,4.0,"r",["PK"]),                 // Re-signed (proj)
             p("Misa","C",24,8.0,"r",["PP2"]),
             p("Sherwood","W",36,5.8,"lu") ],                   // Ext yr5/5 last yr; UFA
       L3: [ tbd("W — TBD",4.0), tbd("C — TBD",4.0), tbd("W — TBD",2.0) ],
