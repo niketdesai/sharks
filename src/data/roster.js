@@ -70,29 +70,29 @@ export const YEARS = [
     detail: "WC1/WC2 target. Defense rebuilt.",
     cap: 104.0, dead: 4.1,
     lines: {
-      L1: [ tbd("W — via trade/FA",5.0),
-            p("Celebrini","C",20,1.0,"lr",["PP1","GOAT"]),    // ELC last yr; RFA. Ext eligible Jul 1.
-            p("Smith","W",22,1.0,"lr",["PP1"]) ],              // ELC last yr; RFA. Ext eligible Jul 1.
-      L2: [ p("Graf","W",24,2.5,"x",["PK"]),                  // Re-signed 3yr. Yr1/3 thru 28-29.
-            p("Wennberg","C",32,6.0,"x",["PK"]),              // Ext yr1/3
-            p("Sherwood","W",32,5.8,"x") ],                    // Ext yr1/5
-      L3: [ p("Toffoli","W",34,6.0,"x",["PP1"]),             // $6M yr2/3
-            p("Misa","C",20,1.0,"e",["PP2"]),                  // ELC yr2/3
-            p("Chernyshov","W",21,0.9,"e") ],                  // ELC yr2/3
-      L4: [ p("Goodrow","W",34,3.6,"lu",["PK"]),             // $3.6M last yr; UFA
-            p("Ostapchuk","C",23,1.2,"r"),                     // New deal (proj)
-            p("Gaudette","W",30,2.0,"lu") ],                   // $2M last yr; UFA
-      D1: [ p("Orlov","D",35,6.5,"lu"),                       // $6.5M last yr; UFA
-            tbd("D — via Eklund trade",5.5) ],
-      D2: [ p("Dickinson","D",20,0.9,"e",["PP2"]),             // ELC yr2/3
-            tbd("D — FA target",5.0) ],
-      D3: [ p("Ferraro","D",28,5.5,"r"),                     // Re-signed (proj)
-            p("Mukhamadullin","D",25,1.5,"r") ],              // New deal (proj)
-      G:  [ p("Askarov","G",24,2.0,"lr"),                    // $2M last yr; RFA. Extending.
-            p("Nedeljkovic","G",31,3.0,"x") ],                 // Ext yr1/2
+      L1: [ p("Chernyshov","W",21,0.9,"e"),
+            p("Celebrini","C",20,1.0,"lr",["C","PP1","GOAT"]),
+            p("Smith","W",22,1.0,"lr",["PP1"]) ],
+      L2: [ p("Eklund","W",23,5.6,"x",["PP2"]),
+            p("Misa","C",20,1.0,"e",["PP2"]),
+            p("Graf","W",24,2.5,"x",["PK"]) ],
+      L3: [ p("Sherwood","W",32,5.8,"x"),
+            p("Wennberg","C",32,6.0,"x",["A","PK"]),
+            p("Toffoli","W",34,6.0,"x",["A","PP1"]) ],
+      L4: [ p("Goodrow","W",34,3.6,"lu",["A","PK"]),
+            p("Ostapchuk","C",23,1.2,"r"),
+            p("Gaudette","W",30,2.0,"lu") ],
+      D1: [ p("Orlov","D",35,6.5,"lu"),
+            tbd("RD — FA target",5.5) ],
+      D2: [ p("Dickinson","D",20,0.9,"e",["PP2"]),
+            p("Mukhamadullin","D",25,1.5,"r",["PK2"]) ],
+      D3: [ p("Ferraro","D",28,5.5,"r",["PK1"]),
+            tbd("RD — depth",2.0) ],
+      G:  [ p("Askarov","G",24,2.0,"lr"),
+            p("Nedeljkovic","G",31,3.0,"x") ],
     },
     extras: [
-      p("Reaves","W",40,1.0,"r"),    // 1yr deal (proj)
+      p("Reaves","W",40,1.0,"r"),
     ],
     deadItems: [
       { name:"Karlsson", reason:"Retained", cost:1.5 },
@@ -103,28 +103,33 @@ export const YEARS = [
   // ────────────────────────── 27-28 ──────────────────────────
   {
     id: "27-28", phase: "Cup run 1", phaseColor: "#9B7FD4",
-    detail: "Window opens. Celebrini + Smith extensions kick in.",
+    detail: "Window opens. Celebrini + Smith extensions kick in. Pohlkamp arrives.",
     cap: 113.5, dead: 1.4,
     lines: {
-      L1: [ tbd("W — TBD",5.0),
-            p("Celebrini","C",21,12.0,"r",["PP1","GOAT"]),    // Ext yr1
-            p("Smith","W",23,9.0,"r",["PP1"]) ],               // Ext yr1
-      L2: [ p("Graf","W",25,2.5,"x",["PK"]),                  // Re-signed yr2/3
-            p("Wennberg","C",33,6.0,"x",["PK"]),              // Ext yr2/3
-            p("Sherwood","W",33,5.8,"x") ],                    // Ext yr2/5
-      L3: [ p("Toffoli","W",35,6.0,"lu"),                    // $6M last yr; UFA
-            p("Misa","C",21,1.0,"lr",["PP2"]),                 // ELC last yr; RFA
-            p("Chernyshov","W",22,0.9,"lr") ],                 // ELC last yr; RFA
-      L4: [ tbd("Depth",1.5), tbd("Depth",1.0), tbd("Depth",1.0) ],
-      D1: [ tbd("D — TBD",6.0), tbd("D — TBD",5.5) ],
-      D2: [ p("Dickinson","D",21,0.9,"lr",["PP2"]),                   // ELC last yr; RFA
-            p("Ferraro","D",29,5.5,"r") ],
-      D3: [ p("Mukhamadullin","D",26,2.0,"r"),
-            tbd("D — TBD",3.0) ],
-      G:  [ p("Askarov","G",25,5.0,"r"),                     // Ext yr1
-            p("Nedeljkovic","G",32,3.0,"lu") ],                // Ext last yr; UFA
+      L1: [ p("Chernyshov","W",22,0.9,"lr"),
+            p("Celebrini","C",21,12.0,"r",["C","PP1","GOAT"]),
+            p("Smith","W",23,9.0,"r",["PP1"]) ],
+      L2: [ tbd("LW — TBD",5.0),
+            p("Misa","C",21,1.0,"lr",["PP2"]),
+            p("Graf","W",25,2.5,"x",["PK"]) ],
+      L3: [ p("Sherwood","W",33,5.8,"x"),
+            p("Wennberg","C",33,6.0,"x",["A","PK"]),
+            p("Toffoli","W",35,6.0,"lu",["A","PP1"]) ],
+      L4: [ tbd("LW — depth",1.5),
+            p("Ostapchuk","C",24,1.5,"x"),
+            tbd("RW — depth",1.0) ],
+      D1: [ tbd("LD — top pair",6.5),
+            tbd("RD — top pair",6.0) ],
+      D2: [ p("Dickinson","D",21,0.9,"lr",["PP2"]),
+            p("Pohlkamp","D",23,1.0,"e") ],
+      D3: [ p("Ferraro","D",29,5.5,"r",["PK1"]),
+            p("Mukhamadullin","D",26,2.0,"r",["PK2"]) ],
+      G:  [ p("Askarov","G",25,5.0,"r"),
+            p("Nedeljkovic","G",32,3.0,"lu") ],
     },
-    extras: [],
+    extras: [
+      p("Reaves","W",41,1.0,"lu"),
+    ],
     deadItems: [ { name:"Hertl", reason:"Retained", cost:1.4 } ],
   },
   // ────────────────────────── 28-29 ──────────────────────────

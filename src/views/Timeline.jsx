@@ -21,9 +21,13 @@ function Dot({ status }) {
 
 const TAG_STYLE = {
   GOAT: { bg:"#008C96", fg:"#fff" },
+  C:    { bg:"#D85A30", fg:"#fff" },
+  A:    { bg:"rgba(216,90,48,0.18)", fg:"#D85A30" },
   PP1: { bg:"rgba(239,159,39,0.15)", fg:"#EF9F27" },
   PP2: { bg:"rgba(55,138,221,0.15)", fg:"#5B8BA0" },
   PK:  { bg:"rgba(155,127,212,0.15)", fg:"#9B7FD4" },
+  PK1: { bg:"rgba(155,127,212,0.20)", fg:"#9B7FD4" },
+  PK2: { bg:"rgba(155,127,212,0.12)", fg:"#9B7FD4" },
 };
 function Tag({ type }) {
   const s = TAG_STYLE[type] || { bg:T.c.bg5, fg:T.c.t4 };
