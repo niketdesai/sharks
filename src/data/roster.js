@@ -32,28 +32,28 @@ export const YEARS = [
     lines: {
       L1: [ p("Graf","W",23,0.9,"lr",["PK"]),               // ELC last yr; RFA. Re-signing.
             p("Celebrini","C",19,1.0,"e",["C","PP1","GOAT"]),    // ELC yr2/3 thru 26-27
-            p("Smith","W",21,1.0,"e",["PP1"]) ],              // ELC yr2/3 thru 26-27
+            p("Smith","W",20,1.0,"e",["PP1"]) ],              // ELC yr2/3 thru 26-27
       L2: [ p("Eklund","W",23,0.9,"lr",["PP2"]),             // ELC last yr; RFA. Trading before bridge.
             p("Wennberg","C",31,5.0,"x",["A","PK"]),              // $5M yr1/2; ext $6M kicks in 26-27
-            p("Sherwood","W",31,1.5,"x") ],                    // $1.5M; ext $5.75M kicks in 26-27
+            p("Sherwood","W",30,1.5,"x") ],                    // $1.5M; ext $5.75M kicks in 26-27
       L3: [ p("Toffoli","W",33,6.0,"x",["PP1"]),             // $6M yr1/3 thru 27-28
-            p("Misa","C",19,1.0,"e",["PP2"]),                  // ELC yr1/3 thru 27-28
+            p("Misa","C",18,1.0,"e",["PP2"]),                  // ELC yr1/3 thru 27-28
             p("Chernyshov","W",20,0.9,"e") ],                  // ELC yr2/3 thru 27-28
-      L4: [ p("Goodrow","W",33,3.6,"x",["PK"]),              // $3.6M yr1/2 thru 26-27
+      L4: [ p("Goodrow","W",32,3.6,"x",["PK"]),              // $3.6M yr1/2 thru 26-27
             p("Ostapchuk","C",22,0.8,"lr"),                    // ELC last yr; RFA
             p("Gaudette","W",29,2.0,"x") ],                    // $2M yr1/2 thru 26-27
       D1: [ p("Orlov","D",34,6.5,"x"),                       // $6.5M yr1/2 thru 26-27
             p("Desharnais","D",29,2.0,"lu") ],                 // $2M last yr; UFA
-      D2: [ p("Dickinson","D",19,0.9,"e"),                    // ELC yr1/3 thru 27-28
+      D2: [ p("Dickinson","D",20,0.9,"e"),                    // ELC yr1/3 thru 27-28
             p("Ferraro","D",27,3.3,"lu") ],                    // $3.3M last yr; UFA
-      D3: [ p("Mukhamadullin","D",24,1.0,"lr"),               // $1M last yr; RFA
-            p("Leddy","D",35,4.0,"lu") ],                      // $4M last yr; UFA
+      D3: [ p("Mukhamadullin","D",23,1.0,"lr"),               // $1M last yr; RFA
+            p("Leddy","D",34,4.0,"lu") ],                      // $4M last yr; UFA
       G:  [ p("Askarov","G",23,2.0,"x"),                      // $2M yr1/2 thru 26-27
-            p("Nedeljkovic","G",30,2.5,"x") ],                 // $2.5M; ext kicks in 26-27
+            p("Nedeljkovic","G",29,2.5,"x") ],                 // $2.5M; ext kicks in 26-27
     },
     extras: [
       p("Dellandrea","C",25,1.3,"x"),  // Depth. Likely gone after this yr.
-      p("Reaves","W",39,1.4,"lu"),     // $1.4M last yr; UFA
+      p("Reaves","W",38,1.4,"lu"),     // $1.4M last yr; UFA
     ],
     deadItems: [
       { name:"Price", reason:"LTIR", cost:10.5 },
@@ -76,7 +76,7 @@ export const YEARS = [
       L2: [ p("Eklund","W",24,5.6,"x",["PP2"]),
             p("Misa","C",19,1.0,"e",["PP2"]),
             p("Graf","W",24,2.5,"x",["PK1"]) ],
-      L3: [ p("Sherwood","W",30,5.8,"x",["PK2"]),
+      L3: [ p("Sherwood","W",31,5.8,"x",["PK2"]),
             p("Wennberg","C",32,6.0,"x",["A","PK1"]),
             p("Toffoli","W",34,6.0,"x",["A","PP1"]) ],
       L4: [ p("Goodrow","W",33,3.6,"lu",["A","PK2"]),
@@ -87,12 +87,12 @@ export const YEARS = [
       D2: [ p("Ferraro","D",28,5.5,"r",["PK1"]),
             p("Dickinson","D",21,0.9,"e",["PP2"]) ],
       D3: [ p("Desharnais","D",30,2.0,"x"),
-            p("Mukhamadullin","D",25,1.5,"r",["PK2"]) ],
+            p("Mukhamadullin","D",24,1.5,"r",["PK2"]) ],
       G:  [ p("Askarov","G",24,2.0,"lr"),
             p("Nedeljkovic","G",30,3.0,"x") ],
     },
     extras: [
-      p("Reaves","W",40,1.0,"r"),
+      p("Reaves","W",39,1.0,"r"),
     ],
     deadItems: [
       { name:"Karlsson", reason:"Retained", cost:1.5 },
@@ -112,7 +112,7 @@ export const YEARS = [
       L2: [ tbd("LW — TBD",5.0),
             p("Misa","C",20,1.0,"lr",["PP2"]),
             p("Graf","W",25,2.5,"x",["PK1"]) ],
-      L3: [ p("Sherwood","W",31,5.8,"x",["PK2"]),
+      L3: [ p("Sherwood","W",32,5.8,"x",["PK2"]),
             p("Wennberg","C",33,6.0,"x",["A","PK1"]),
             p("Toffoli","W",35,6.0,"lu",["A","PP1"]) ],
       L4: [ tbd("LW — depth",1.5),
@@ -123,7 +123,7 @@ export const YEARS = [
       D2: [ p("Ferraro","D",29,5.5,"r",["PK1"]),
             p("Pohlkamp","D",22,1.0,"e",["PP2"]) ],
       D3: [ p("Desharnais","D",31,2.0,"lu"),
-            p("Mukhamadullin","D",26,2.0,"r",["PK2"]) ],
+            p("Mukhamadullin","D",25,2.0,"r",["PK2"]) ],
       G:  [ p("Askarov","G",25,5.0,"r"),
             p("Nedeljkovic","G",31,3.0,"lu") ],
     },
@@ -142,9 +142,9 @@ export const YEARS = [
       L2: [ tbd("LW — TBD",5.0),
             p("Misa","C",21,8.0,"r",["PP2"]),
             p("Graf","W",26,2.5,"lu",["PK1"]) ],
-      L3: [ p("Sherwood","W",32,5.8,"x",["PK2"]),
+      L3: [ p("Sherwood","W",33,5.8,"x",["PK2"]),
             p("Wennberg","C",34,6.0,"lu",["A","PK1"]),
-            p("Musty","W",22,0.9,"e") ],
+            p("Musty","W",23,0.9,"e") ],
       L4: [ tbd("Depth",1.5),
             p("Ostapchuk","C",25,1.5,"x",["PK2"]),
             tbd("Depth",1.0) ],
@@ -152,7 +152,7 @@ export const YEARS = [
             tbd("RD — partner",6.0) ],
       D2: [ p("Ferraro","D",30,5.5,"r",["PK1"]),
             p("Pohlkamp","D",23,1.0,"lr",["PP2"]) ],
-      D3: [ p("Mukhamadullin","D",27,3.0,"r",["PK2"]),
+      D3: [ p("Mukhamadullin","D",26,3.0,"r",["PK2"]),
             tbd("D — TBD",3.0) ],
       G:  [ p("Askarov","G",26,5.0,"r"),
             p("Ravensbergen","G",22,1.0,"e") ],
@@ -171,8 +171,8 @@ export const YEARS = [
             p("Smith","W",24,9.0,"r",["PP1"]) ],
       L2: [ p("Graf","W",27,4.0,"r",["PK1"]),
             p("Misa","C",22,8.0,"r",["PP2"]),
-            p("Musty","W",23,3.5,"r") ],
-      L3: [ p("Sherwood","W",33,5.8,"x",["PK2"]),
+            p("Musty","W",24,3.5,"r") ],
+      L3: [ p("Sherwood","W",34,5.8,"x",["PK2"]),
             tbd("C — TBD",4.0),
             tbd("RW — TBD",2.0) ],
       L4: [ tbd("Depth",1.5),
@@ -182,7 +182,7 @@ export const YEARS = [
             tbd("RD — partner",6.0) ],
       D2: [ p("Ferraro","D",31,5.5,"lu",["PK1"]),
             tbd("RD — TBD",4.0) ],
-      D3: [ p("Mukhamadullin","D",28,3.0,"r",["PK2"]),
+      D3: [ p("Mukhamadullin","D",27,3.0,"r",["PK2"]),
             tbd("D — TBD",3.0) ],
       G:  [ p("Askarov","G",27,5.0,"r"),
             p("Ravensbergen","G",23,1.0,"lr") ],
@@ -201,8 +201,8 @@ export const YEARS = [
             p("Smith","W",25,9.0,"r",["PP1"]) ],
       L2: [ p("Graf","W",28,4.0,"r",["PK1"]),
             p("Misa","C",23,8.0,"r",["PP2"]),
-            p("Musty","W",24,3.5,"r") ],
-      L3: [ p("Sherwood","W",34,5.8,"lu",["PK2"]),
+            p("Musty","W",25,3.5,"r") ],
+      L3: [ p("Sherwood","W",35,5.8,"lu",["PK2"]),
             tbd("C — TBD",4.0),
             tbd("RW — TBD",2.0) ],
       L4: [ tbd("Depth",1.5),
@@ -212,7 +212,7 @@ export const YEARS = [
             tbd("RD — partner",6.0) ],
       D2: [ tbd("LD — TBD",5.0),
             tbd("RD — TBD",4.0) ],
-      D3: [ p("Mukhamadullin","D",29,3.0,"r",["PK2"]),
+      D3: [ p("Mukhamadullin","D",28,3.0,"r",["PK2"]),
             tbd("D — TBD",3.0) ],
       G:  [ p("Askarov","G",28,5.0,"r"),
             p("Ravensbergen","G",24,3.0,"r") ],
