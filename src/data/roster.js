@@ -31,10 +31,10 @@ export const YEARS = [
     cap: 95.5, dead: 30.1,
     lines: {
       L1: [ p("Graf","W",23,0.9,"lr",["PK"]),               // ELC last yr; RFA. Re-signing.
-            p("Celebrini","C",19,1.0,"e",["PP1","GOAT"]),    // ELC yr2/3 thru 26-27
+            p("Celebrini","C",19,1.0,"e",["C","PP1","GOAT"]),    // ELC yr2/3 thru 26-27
             p("Smith","W",21,1.0,"e",["PP1"]) ],              // ELC yr2/3 thru 26-27
       L2: [ p("Eklund","W",23,0.9,"lr",["PP2"]),             // ELC last yr; RFA. Trading before bridge.
-            p("Wennberg","C",31,5.0,"x",["PK"]),              // $5M yr1/2; ext $6M kicks in 26-27
+            p("Wennberg","C",31,5.0,"x",["A","PK"]),              // $5M yr1/2; ext $6M kicks in 26-27
             p("Sherwood","W",31,1.5,"x") ],                    // $1.5M; ext $5.75M kicks in 26-27
       L3: [ p("Toffoli","W",33,6.0,"x",["PP1"]),             // $6M yr1/3 thru 27-28
             p("Misa","C",19,1.0,"e",["PP2"]),                  // ELC yr1/3 thru 27-28
@@ -166,21 +166,26 @@ export const YEARS = [
     detail: "Sustain or retool. Dead cap clean.",
     cap: 130.0, dead: 0,
     lines: {
-      L1: [ p("Chernyshov","W",24,4.0,"r"),
-            p("Celebrini","C",23,12.0,"r",["PP1","GOAT"]),
-            p("Smith","W",25,9.0,"r",["PP1"]) ],
-      L2: [ p("Graf","W",27,4.0,"r",["PK"]),                 // Re-signed again (proj)
-            p("Misa","C",23,8.0,"r",["PP2"]),
-            p("Sherwood","W",35,5.8,"x") ],                    // Ext yr4/5
-      L3: [ tbd("W — TBD",4.0), tbd("C — TBD",4.0), tbd("W — TBD",2.0) ],
-      L4: [ tbd("Depth",1.5), tbd("Depth",1.0), tbd("Depth",1.0) ],
-      D1: [ p("Dickinson","D",23,8.0,"r",["PP2"]),
-            tbd("D — partner",6.0) ],
-      D2: [ tbd("D — TBD",5.0),
-            p("Ferraro","D",31,5.5,"lu") ],                    // Re-signed last yr
-      D3: [ tbd("D — TBD",3.0), tbd("D — TBD",3.0) ],
+      L1: [ p("Chernyshov","W",24,4.0,"r",["PP1","PK1"]),
+            p("Celebrini","C",23,12.0,"r",["C","PP1","GOAT"]),
+            p("Smith","W",24,9.0,"r",["PP1"]) ],
+      L2: [ p("Graf","W",27,4.0,"r",["PK1"]),
+            p("Misa","C",22,8.0,"r",["PP2"]),
+            tbd("RW — TBD",3.0) ],
+      L3: [ p("Sherwood","W",33,5.8,"x",["PK2"]),
+            tbd("C — TBD",4.0),
+            tbd("RW — TBD",2.0) ],
+      L4: [ tbd("Depth",1.5),
+            p("Ostapchuk","C",26,1.5,"lu",["PK2"]),
+            tbd("Depth",1.0) ],
+      D1: [ p("Dickinson","D",24,8.0,"r",["PP1"]),
+            tbd("RD — partner",6.0) ],
+      D2: [ p("Ferraro","D",31,5.5,"lu",["PK1"]),
+            tbd("RD — TBD",4.0) ],
+      D3: [ p("Mukhamadullin","D",28,3.0,"r",["PK2"]),
+            tbd("D — TBD",3.0) ],
       G:  [ p("Askarov","G",27,5.0,"r"),
-            tbd("G2 — TBD",1.5) ],
+            p("Ravensbergen","G",23,1.0,"lr") ],
     },
     extras: [],
     deadItems: [],
@@ -191,20 +196,26 @@ export const YEARS = [
     detail: "Post-window. Core still young enough to reload.",
     cap: 135.0, dead: 0,
     lines: {
-      L1: [ p("Chernyshov","W",25,4.0,"r"),
-            p("Celebrini","C",24,12.0,"r",["PP1","GOAT"]),
-            p("Smith","W",26,9.0,"r",["PP1"]) ],
-      L2: [ p("Graf","W",28,4.0,"r",["PK"]),                 // Re-signed (proj)
-            p("Misa","C",24,8.0,"r",["PP2"]),
-            p("Sherwood","W",36,5.8,"lu") ],                   // Ext yr5/5 last yr; UFA
-      L3: [ tbd("W — TBD",4.0), tbd("C — TBD",4.0), tbd("W — TBD",2.0) ],
-      L4: [ tbd("Depth",1.5), tbd("Depth",1.0), tbd("Depth",1.0) ],
-      D1: [ p("Dickinson","D",24,8.0,"r",["PP2"]),
-            tbd("D — partner",6.0) ],
-      D2: [ tbd("D — TBD",5.0), tbd("D — TBD",4.0) ],
-      D3: [ tbd("D — TBD",3.0), tbd("D — TBD",3.0) ],
+      L1: [ p("Chernyshov","W",25,4.0,"r",["PP1","PK1"]),
+            p("Celebrini","C",24,12.0,"r",["C","PP1","GOAT"]),
+            p("Smith","W",25,9.0,"r",["PP1"]) ],
+      L2: [ p("Graf","W",28,4.0,"r",["PK1"]),
+            p("Misa","C",23,8.0,"r",["PP2"]),
+            tbd("RW — TBD",3.0) ],
+      L3: [ p("Sherwood","W",34,5.8,"lu",["PK2"]),
+            tbd("C — TBD",4.0),
+            tbd("RW — TBD",2.0) ],
+      L4: [ tbd("Depth",1.5),
+            tbd("C — TBD",1.5),
+            tbd("Depth",1.0) ],
+      D1: [ p("Dickinson","D",25,8.0,"r",["PP1"]),
+            tbd("RD — partner",6.0) ],
+      D2: [ tbd("LD — TBD",5.0),
+            tbd("RD — TBD",4.0) ],
+      D3: [ p("Mukhamadullin","D",29,3.0,"r",["PK2"]),
+            tbd("D — TBD",3.0) ],
       G:  [ p("Askarov","G",28,5.0,"r"),
-            tbd("G2 — TBD",1.5) ],
+            p("Ravensbergen","G",24,3.0,"r") ],
     },
     extras: [],
     deadItems: [],
