@@ -139,7 +139,7 @@ export default function Timeline() {
 
   return (
     <div style={{ padding:"16px 0" }}>
-      <div style={{ display:"flex", gap:14, padding:"0 16px 12px", flexWrap:"wrap", alignItems:"center" }}>
+      <div style={{ display:"flex", gap:14, padding:"12px 16px", flexWrap:"wrap", alignItems:"center", position:"sticky", top:0, zIndex:6, background:T.c.bg1, borderBottom:`0.5px solid ${T.c.bg4}` }}>
         {Object.entries(STATUS).map(([k,v]) => (
           <div key={k} style={{ display:"flex", alignItems:"center", gap:4 }}>
             <Dot status={k} /><span style={st.mono(10, T.c.t5)}>{v.label}</span>
@@ -151,9 +151,9 @@ export default function Timeline() {
       <div style={{ overflowX:"auto", overflowY:"visible", WebkitOverflowScrolling:"touch", paddingBottom:8 }}>
         <table style={{ borderCollapse:"collapse", minWidth:labelW + colW * YEARS.length }}>
           <thead><tr>
-            <th style={{ ...stickyBase, zIndex:4, borderBottom:cellBorder }} />
+            <th style={{ ...stickyBase, zIndex:5, borderBottom:cellBorder, top:0, position:"sticky" }} />
             {YEARS.map((yr) => (
-              <th key={yr.id} style={{ ...yearBase, borderBottom:`2px solid ${yr.phaseColor}`, verticalAlign:"bottom" }}>
+              <th key={yr.id} style={{ ...yearBase, borderBottom:`2px solid ${yr.phaseColor}`, verticalAlign:"bottom", position:"sticky", top:0, zIndex:3, background:T.c.bg1 }}>
                 <div style={{ ...st.sans(16, T.c.t0), fontWeight:500 }}>{yr.id}</div>
                 <div style={{ ...st.mono(10, yr.phaseColor), fontWeight:500, textTransform:"uppercase", letterSpacing:"0.04em", marginTop:2 }}>{yr.phase}</div>
                 <CapBar year={yr} />
